@@ -111,9 +111,12 @@ E Instanmin(E a, E b, )
 template <typename E>
 E Instanmax(E a, E b, )
 {
-
-
-
+	if (a < b)
+	{
+		return b;
+	}
+	else
+		return a;
 }
 template <typename F>
 F assertions(F a, F b)
