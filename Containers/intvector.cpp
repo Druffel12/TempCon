@@ -1,6 +1,7 @@
 #include "intvector.h"
 #include <cassert>
 #include <cstring>
+#include <iostream>
 
 intVector::intVector()
 {
@@ -34,10 +35,9 @@ int& intVector::append(int val)
 	++size;
 
 	return data[size - 1];
-
 }
 
-size_t intVector::capacity_t() const
+size_t intVector::capacityF() const
 {
 	return capacity;
 }
@@ -62,6 +62,17 @@ int intVector::back() const
 	return data[size - 1];
 }
 
+
+int & intVector::operator[](size_t idx)
+{
+	return data[idx];
+}
+
+int intVector::operator[](size_t idx) const
+{
+	return data[idx];
+}
+
 bool intVector::grow(size_t minSize)
 {
 	if (minSize <= capacity)
@@ -77,10 +88,8 @@ bool intVector::grow(size_t minSize)
 	int oldCapacity = capacity;
 	capacity *= 2;
 
-	delete[] data;
-
 	int* newData = new int[capacity];
-	memcpy(newData, data, size);
+	memcpy(newData, data, sizeof(int) * size);
 
 	delete[] data;
 	data = newData;
@@ -91,4 +100,80 @@ bool intVector::grow(size_t minSize)
 int* intVector::dataptr() const
 {
 	return data;
+}
+
+void intVector::Clear()
+{
+	size = 0;
+}
+
+void intVector::Erase(size_t idx)
+{
+	for (int i = idx; i < size; i++)
+	{
+		int temp = data[i];
+		data[i] = data[i + 1];
+		data[i + 1] = temp;
+	}
+
+	size--;
+}
+
+int intVector::count(int value)
+{
+	int counter = 0;
+	for (int i = 0; i < size; i++)
+	{
+		if (data[i] == value)
+		{
+			counter++;
+		}
+	}
+	return counter;
+}
+
+void intVector::insert(size_t idx, int value)
+{
+	assert(idx >= 0);
+	assert(idx <= size);
+
+
+	append(value);
+
+	for (int i = size - 1; i > idx; --i)
+	{
+		int temp = data[i];
+		data[i] = data[i - 1];
+		data[i - 1] = temp;
+	}
+}
+
+void intVector::Reserve(size_t newCapacity)
+{
+	assert(newCapacity > capacity);
+	int *newData = new int[newCapacity];
+	memcpy(newData, data, sizeof(int) * size);
+	delete[] data;
+	data = newData;
+	capacity = newCapacity;
+}
+
+void intVector::Compact()
+{
+	if (capacity > size)
+	{
+		int *newData = new int[size];
+		memcpy(newData, data, sizeof(int) * size);
+		delete[] data;
+		data = newData;
+		capacity = size;
+	}
+}
+
+void intVector::printVector()
+{
+	for (int i = 0; i < size; ++i)
+	{
+		std::cout << data[i] << std::endl;
+	}
 }

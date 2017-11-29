@@ -19,6 +19,10 @@ class intVector
 public:
 	intVector();
 	~intVector();
+
+	int &operator[](size_t idx);
+
+	int operator[](size_t idx) const;
 	                                                                     
 
 	int& at(size_t idx);
@@ -27,9 +31,24 @@ public:
 
 	int* dataptr() const;
 
-	size_t capacity_t() const;
+	size_t capacityF() const;
+
+	void Clear();
+
+	void Erase(size_t idx);
+
+	int count(int value);
+
+	void insert(size_t idx, int value);
+
+	void Reserve(size_t newCapacity);
+
+	void Compact();
+
+	void printVector();
 
 private:
 		bool grow(size_t minSize);
+
 
 };
