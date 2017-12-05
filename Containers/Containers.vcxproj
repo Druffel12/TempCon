@@ -110,10 +110,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="intLinkedListNode.cpp" />
     <ClCompile Include="intvector.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="intlinkedlist.h" />
     <ClInclude Include="intvector.h" />
     <ClInclude Include="tvector.h" />
   </ItemGroup>

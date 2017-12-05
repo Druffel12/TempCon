@@ -1,9 +1,27 @@
 #include "intvector.h"
 #include <cassert>
+#include "intLinkedList.h"
+
+
+template<typename T>
+bool assertEqual(T a, T b)
+{
+	return a == b;
+}
+
 
 int main()
 {
-	intVector nums;
+	intLinkedList nums;
+	nums.append(1);
+	nums.append(2);
+	nums.append(3);
+	nums.append(4);
+
+	assertEqual(nums.at(2), 3);
+	assertEqual(nums.at(7), 0);
+
+	/*intVector nums;
 
 	nums.append(1);
 	nums.append(4);
@@ -23,7 +41,7 @@ int main()
 
 	nums.Reserve(50);
 
-	assert((int)nums.capacityF() == 50);
+	assert((int)nums.capacityF() == 50);*/
 
 
 	//assertEqual<size_t>(nums.getCapacity(), 2);
