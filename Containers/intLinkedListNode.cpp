@@ -107,6 +107,22 @@ int intLinkedList::back() const
 	
 }
 
+int intLinkedList::Count(int value)
+{
+	intLinkedListNode *iter = head;
+	int counter = 0;
+	while (iter->next !=nullptr)
+	{
+		if (iter->value == value)
+		{
+			counter++;
+		}
+		iter = iter->next;
+	}
+	
+	return counter;
+}
+
 void intLinkedList::clear()
 {
 	intLinkedListNode* iter = head;
@@ -119,17 +135,25 @@ void intLinkedList::clear()
 	head = nullptr;
 }
 
-void intLinkedList::Erase() const
+void intLinkedList::Erase(size_t idx)
 {
-	int x;
-
 	intLinkedListNode* iter = head;
-	while (iter != nullptr)
+	intLinkedListNode *prev = head;
+	int counter = 0;
+
+	while (iter-> != nullptr && counter != idx)
 	{
-		intLinkedListNode* next = iter->next;
-		delete [x];
-		iter = next;
+		if (counter == idx - 1)
+		{
+			prev = iter;
+		}
+		iter = iter->next;
+		counter++;
 	}
+	assert(counter == idx);
+
+	prev->next = iter->next;
+	delete iter;
 }
 
 /*size_t intLinkedList::AsO() const

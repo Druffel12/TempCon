@@ -1,6 +1,9 @@
+#include "test.h"
+#include <iostream>
 #include "intvector.h"
 #include <cassert>
 #include "intLinkedList.h"
+#include "algorithms.h"
 
 
 template<typename T>
@@ -12,11 +15,32 @@ bool assertEqual(T a, T b)
 
 int main()
 {
+	std::cout << "My Shtoyle is unblockable" << std::endl;
+	tVector<int> nums;
+	nums.append(0);
+	nums.appned(1);
+
+	auto iter = nums.begin();
+
+
+
+	/*
+	int nums[] = { 1,3,5,7,9 };
+	int* start = nums;
+	int* end = start + 5;
+
+	int total = addRange(start, end);
+	*/
+
+
 	intLinkedList nums;
-	nums.append(1);
-	nums.append(2);
-	nums.append(3);
-	nums.append(4);
+	list.append(1);
+	list.append(2);
+	list.append(3);
+	list.append(3,4);
+
+	iterator<int iter = list.start();
+	iter++;
 
 	assertEqual(nums.at(2), 3);
 	assertEqual(nums.at(7), 0);

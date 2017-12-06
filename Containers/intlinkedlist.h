@@ -12,7 +12,7 @@ public:
 
 	intLinkedList();
 	~intLinkedList();
-
+	 
 	void append(int value);
 
 	int at(int index);
@@ -24,7 +24,8 @@ public:
 	int back() const;
 	//size_t AsO() const;
 	void clear();
-	void Erase() const;
+	void Erase(size_t idx);
+	int Count(int value);
 
 	int find();
 
